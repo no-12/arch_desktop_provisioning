@@ -6,12 +6,14 @@
     update_cache: true
 
 - name: Ensure cupsd service is stopped and disabled
+  become: yes
   systemd:
     name: org.cups.cupsd.service
     state: stopped
     enabled: no
 
 - name: Ensure cupsd socket is started and enabled
+  become: yes
   systemd:
     name: org.cups.cupsd.socket
     state: started
