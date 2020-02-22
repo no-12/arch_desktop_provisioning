@@ -1,0 +1,23 @@
+---
+- name: Ensure package is present
+  become: true
+  pacman:
+    name: "{{ cpu_ucode_vendor }}-ucode"
+    update_cache: true
+
+- name: Find systemd-boot entry files
+  find:
+    paths: /boot/loader/entries
+    patterns: "*.conf"
+  register: cpu_ucode_systemd_boot_entries
+
+- name: Ensure microcode is loaded by systemd-boot
+  become: true
+  lineinfile:
+    path: "{{ item.path }}"
+    insertbefore: 'initramfs-linux\.img'
+    regexp: 'initrd /(amd|intel)-ucode\.img'
+    line: "initrd /{{ cpu_ucode_vendor }}-ucode.img"
+    state: present
+  with_items: "{{ cpu_ucode_systemd_boot_entries.files }}"
+  when: cpu_ucode_systemd_boot_entries.matched > 0

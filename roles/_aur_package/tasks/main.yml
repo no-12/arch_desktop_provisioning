@@ -1,0 +1,12 @@
+---
+- name: Check if package is present
+  command:
+    cmd: "yay -Q {{ aur_package_name }}"
+  changed_when: false
+  ignore_errors: yes
+  register: aur_package_query
+
+- name: Ensure package is present
+  command:
+    cmd: "yay -S --noconfirm --noprovides {{ aur_package_name }}"
+  when: aur_package_query.rc == 1

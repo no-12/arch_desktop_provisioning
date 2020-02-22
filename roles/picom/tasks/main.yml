@@ -1,0 +1,33 @@
+---
+- name: Ensure package is present
+  become: true
+  pacman:
+    name: picom
+    update_cache: yes
+
+- name: Ensures config dir exists
+  file:
+    path: "{{ ansible_env.HOME }}/.config/picom"
+    state: directory
+    recurse: yes
+
+- name: Ensure config file is present
+  template:
+    src: picom.conf
+    dest: "{{ ansible_env.HOME }}/.config/picom/picom.conf"
+    mode: 0644
+  notify: restart picom.service
+
+- name: Ensure service file is present
+  become: true
+  copy:
+    src: picom.service
+    dest: /etc/systemd/user/picom.service
+    mode: 0644
+  notify: restart picom.service
+
+- name: Ensure service is enabled
+  systemd:
+    name: picom
+    scope: user
+    enabled: yes

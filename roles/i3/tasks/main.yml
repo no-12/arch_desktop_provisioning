@@ -1,0 +1,35 @@
+---
+- name: Ensure packages are present
+  become: yes
+  pacman:
+    name:
+      - i3-wm
+      - playerctl
+      - libnotify
+    update_cache: yes
+
+- name: Ensures config dir exists
+  file:
+    path: "{{ ansible_env.HOME }}/.config/i3"
+    state: directory
+    recurse: yes
+
+- name: Ensure config file is present
+  copy:
+    src: config
+    dest: "{{ ansible_env.HOME }}/.config/i3/config"
+    mode: 0644
+
+- name: Ensures scripts dir exists
+  file:
+    path: "{{ ansible_env.HOME }}/.config/i3/scripts"
+    state: directory
+    recurse: yes
+
+- name: Ensure scripts are present
+  copy:
+    src: "{{ item }}"
+    dest: "{{ ansible_env.HOME }}/.config/i3/scripts/"
+    mode: 0744
+  with_fileglob:
+    - "scripts/*"

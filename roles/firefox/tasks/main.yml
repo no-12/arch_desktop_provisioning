@@ -1,0 +1,6 @@
+---
+- name: Ensure package is present
+  become: true
+  pacman:
+    name: firefox
+    update_cache: true

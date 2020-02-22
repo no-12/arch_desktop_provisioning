@@ -1,0 +1,5 @@
+---
+cpu_ucode_vendor: intel
+xorg_xf86_video: xf86-video-vmware
+xorg_laptop_screen_identifier:
+picom_vsync: false

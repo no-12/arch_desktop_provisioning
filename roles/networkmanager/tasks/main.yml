@@ -1,0 +1,21 @@
+---
+- name: Ensure package is present
+  become: yes
+  pacman:
+    name:
+      - networkmanager
+      - network-manager-applet
+    update_cache: yes
+
+- name: Ensure config is present
+  become: yes
+  copy:
+    src: NetworkManager.conf
+    dest: /etc/NetworkManager/NetworkManager.conf
+    mode: 0644
+  notify: restart NetworkManager.service
+
+- name: Ensure service is enabled
+  systemd:
+    name: NetworkManager
+    enabled: yes

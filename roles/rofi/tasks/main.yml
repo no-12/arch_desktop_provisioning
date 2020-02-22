@@ -1,0 +1,39 @@
+---
+- name: Ensure greenclip config file is present
+  copy:
+    src: greenclip.cfg
+    dest: "{{ ansible_env.HOME }}/.config/greenclip.cfg"
+    mode: 0644
+  notify: restart greenclip.service
+
+- name: Ensure greenclip service file is present
+  become: yes
+  copy:
+    src: greenclip.service
+    dest: /etc/systemd/user/greenclip.service
+    mode: 0644
+  notify: restart greenclip.service
+
+- name: Ensure greenclip.service is enabled
+  systemd:
+    name: greenclip
+    scope: user
+    enabled: yes
+
+- name: Ensure rofi package is present
+  become: yes
+  pacman:
+    name: rofi
+    update_cache: yes
+
+- name: Ensures rofi config dir exists
+  file:
+    path: "{{ ansible_env.HOME }}/.config/rofi"
+    state: directory
+    recurse: yes
+
+- name: Ensure rofi config file is present
+  copy:
+    src: config.rasi
+    dest: "{{ ansible_env.HOME }}/.config/rofi/config.rasi"
+    mode: 0644

@@ -1,0 +1,19 @@
+---
+- name: Ensure package is present
+  become: true
+  pacman:
+    name: docker
+    update_cache: true
+
+- name: Ensure users are in docker group
+  become: true
+  user:
+    name: "{{ ansible_user }}"
+    groups: docker
+    append: yes
+
+- name: Ensure service is enabled
+  become: true
+  systemd:
+    name: docker
+    enabled: yes

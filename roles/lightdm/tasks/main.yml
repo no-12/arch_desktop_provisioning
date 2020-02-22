@@ -1,0 +1,25 @@
+---
+- name: Ensure package is present
+  become: yes
+  pacman:
+    name:
+      - lightdm
+      - lightdm-gtk-greeter
+      - numlockx
+    update_cache: yes
+
+- name: Ensure config files are present
+  copy:
+    src: "{{ item }}"
+    dest: "/etc/lightdm/{{ item }}"
+    mode: 0644
+  become: true
+  with_items:
+    - lightdm.conf
+    - lightdm-gtk-greeter.conf
+
+- name: Ensure service is enabled
+  become: yes
+  systemd:
+    name: lightdm
+    enabled: yes

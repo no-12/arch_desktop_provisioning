@@ -1,0 +1,10 @@
+---
+- name: Ensure package is present
+  become: true
+  pacman:
+    name:
+      - pulseaudio
+      - pulseaudio-alsa
+      - pulseaudio-bluetooth
+      - pavucontrol
+    update_cache: yes

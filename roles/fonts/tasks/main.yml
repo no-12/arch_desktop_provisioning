@@ -1,0 +1,9 @@
+---
+- name: Ensure packages are present
+  become: true
+  pacman:
+    name:
+      - otf-font-awesome
+      - ttf-font-awesome
+      - powerline-fonts
+    update_cache: true

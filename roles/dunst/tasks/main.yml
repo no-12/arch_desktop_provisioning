@@ -1,0 +1,33 @@
+---
+- name: Ensure package is present
+  become: true
+  pacman:
+    name: dunst
+    update_cache: true
+
+- name: Ensures config dir exists
+  file:
+    path: "{{ ansible_env.HOME }}/.config/dunst"
+    state: directory
+    recurse: yes
+
+- name: Ensure config is present
+  copy:
+    src: dunstrc
+    dest: "{{ ansible_env.HOME }}/.config/dunst/dunstrc"
+    mode: 0644
+  notify: restart dunst.service
+
+- name: Ensure service file is present
+  become: true
+  copy:
+    src: dunst.service
+    dest: /etc/systemd/user/dunst.service
+    mode: 0644
+  notify: restart dunst.service
+
+- name: Ensure service is enabled
+  systemd:
+    name: dunst
+    scope: user
+    enabled: yes

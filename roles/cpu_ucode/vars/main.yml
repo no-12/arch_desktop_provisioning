@@ -1,0 +1,2 @@
+---
+cpu_ucode_vendor: "{{ ansible_facts['processor'] | join | regex_search('amd|intel', ignorecase=True) | lower }}"

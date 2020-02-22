@@ -1,0 +1,33 @@
+---
+- name: Ensure required packages are present
+  become: yes
+  pacman:
+    name:
+      - base-devel
+      - go
+    update_cache: yes
+
+- name: Check if yay is present
+  command: which yay
+  register: yay_is_present
+  changed_when: yay_is_present.rc == 1
+  failed_when: yay_is_present.rc >= 2
+
+- name: Ensure yay is present
+  block:
+    - name: Clone yay repo
+      git:
+        repo: https://aur.archlinux.org/yay.git
+        dest: /tmp/yay
+
+    - name: Install yay
+      command:
+        chdir: /tmp/yay
+        cmd: makepkg -Cfis --noconfirm
+        creates: /usr/bin/yay
+
+    - name: Remove yay repo
+      file:
+        path: /tmp/yay
+        state: absent
+  when: yay_is_present.rc == 1

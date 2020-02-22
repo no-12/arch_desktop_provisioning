@@ -1,0 +1,7 @@
+---
+- name: restart picom.service
+  systemd:
+    name: picom
+    scope: user
+    state: restarted
+    daemon_reload: yes

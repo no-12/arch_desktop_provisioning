@@ -1,0 +1,16 @@
+---
+- name: Ensure package is present
+  become: yes
+  pacman:
+    name:
+      - i3lock
+      - scrot
+      - imagemagick
+    update_cache: yes
+
+- name: Ensure blurlock file is present
+  become: yes
+  copy:
+    src: blurlock
+    dest: /usr/bin/blurlock
+    mode: 0755

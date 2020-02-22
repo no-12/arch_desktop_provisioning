@@ -1,0 +1,40 @@
+---
+- name: Ensure package is present
+  become: true
+  pacman:
+    name:
+      - gvfs
+      - gnome-keyring
+      - libsecret
+      - code
+    update_cache: true
+
+- name: List installed extensions
+  command: code --list-extensions
+  changed_when: false
+  register: code_installed_extensions
+
+- name: Ensure extensions are present
+  command: "code --install-extension {{ item }}"
+  when: item not in code_installed_extensions.stdout_lines
+  with_items:
+    - donjayamanne.githistory
+    - foxundermoon.shell-format
+    - mads-hartmann.bash-ide-vscode
+    - ms-azuretools.vscode-docker
+    - ms-python.python
+    - redhat.vscode-yaml
+    - timonwong.shellcheck
+    - vscoss.vscode-ansible
+
+- name: Ensure config dir exists
+  file:
+    path: "{{ ansible_env.HOME }}/.config/Code - OSS/User"
+    state: directory
+    recurse: yes
+
+- name: Ensure config is present
+  copy:
+    src: settings.json
+    dest: "{{ ansible_env.HOME }}/.config/Code - OSS/User/settings.json"
+    mode: 0644

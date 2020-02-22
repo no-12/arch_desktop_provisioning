@@ -1,0 +1,51 @@
+---
+- hosts: all
+
+  pre_tasks:
+    - name: Ensure common packages are present
+      become: yes
+      pacman:
+        name:
+          - base-devel
+          - htop
+          - vim
+          - git
+          - gvfs
+        update_cache: yes
+
+    - name: Ensure common services are started and enabled
+      systemd:
+        name: "{{ item }}"
+        state: started
+        enabled: yes
+      with_items:
+        - fstrim.timer
+        - systemd-timesyncd.service
+
+  roles:
+    - cpu_ucode
+    - role: reflector
+      vars:
+        - reflector_country: Germany
+    - yay
+    - fonts
+    - zsh
+    - xorg
+    - lightdm
+    - urxvt
+    - i3
+    - i3lock
+    - i3blocks
+    - rofi
+    - picom
+    - dunst
+    - arandr
+    - networkmanager
+    - pulseaudio
+    - blueman
+    - thunar
+    - firefox
+    - google-chrome
+    - code
+    - docker
+    - cups
