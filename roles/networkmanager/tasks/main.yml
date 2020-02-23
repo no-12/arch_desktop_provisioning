@@ -16,6 +16,7 @@
   notify: restart NetworkManager.service
 
 - name: Ensure service is enabled
+  become: yes
   systemd:
     name: NetworkManager
     enabled: yes
