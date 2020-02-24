@@ -3,17 +3,13 @@ URxvt.boldFont:                 xft:JetBrains Mono:bold:size=12:antialias=true
 URxvt.italicFont:               xft:JetBrains Mono:italic:size=12:antialias=true
 URxvt.boldItalicFont:           xft:JetBrains Mono:bold:italic:size=12:antialias=true
 
-URxvt.scrollBar: true
-URxvt.scrollBar_right: true
-URxvt.scrollstyle: plain
+URxvt.scrollBar: false
+URxvt.scrollBar_right: false
 
 URxvt.saveLines: 2048
 
-URxvt.perl-ext-common: default,matcher,font-size
-
-!! Change font size on Control-Plus/Minus
-URxvt.keysym.Control-0x2b: perl:font-size:increase
-URxvt.keysym.Control-0x2d: perl:font-size:decrease
+URxvt.perl-ext:
+URxvt.perl-ext-common:
 
 URxvt.keysym.Shift-Up: command:\033]720;1\007
 URxvt.keysym.Shift-Down: command:\033]721;1\007
