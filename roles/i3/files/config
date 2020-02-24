@@ -231,11 +231,10 @@ mode "Applications" {
     bindsym s exec pavucontrol, mode "default", workspace $ws_system
     bindsym n exec nm-connection-editor, mode "default", workspace $ws_system
     bindsym m exec arandr, mode "default", workspace $ws_system
-
-    bindsym f exec firefox -new-tab about:home, mode "default", workspace $ws_web_browser
-    bindsym g exec google-chrome-stable chrome-search://local-ntp/local-ntp.html, mode "default", workspace $ws_web_browser
-    bindsym c exec code, mode "default", workspace $ws_code
-    bindsym t exec thunar, mode "default"
+    bindsym c exec galculator, mode "default"
+    bindsym b exec firefox -new-tab about:home, mode "default", workspace $ws_web_browser
+    bindsym e exec code, mode "default", workspace $ws_code
+    bindsym f exec thunar, mode "default"
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -245,12 +244,13 @@ bindsym $mod+x mode "Applications"
 
 
 assign [class="firefox"] $ws_web_browser
-assign [class="Google-chrome"] $ws_web_browser
 assign [class="URxvt"] $ws_terminal
 assign [class="Code"] $ws_code
 assign [class="Pavucontrol"] $ws_system
 assign [class="Nm-connection-editor"] $ws_system
 assign [class="Arandr"] $ws_system
+
+for_window [class="Galculator"] floating enable
 
 
 exec_always --no-startup-id systemctl --user restart picom

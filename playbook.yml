@@ -44,6 +44,7 @@
     - networkmanager
     - pulseaudio
     - blueman
+    - galculator
     - thunar
     - firefox
     - google-chrome
