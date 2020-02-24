@@ -1,5 +1,5 @@
 {
-    "editor.fontFamily": "'JetBrains Mono', 'Font Awesome 5 Brands', 'Font Awesome 5 Free', 'Font Awesome 5 Free Solid', 'PowerlineSymbols', 'monospace', monospace",
+    "editor.fontFamily": "'JetBrains Mono', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback', 'Font Awesome 5 Brands', 'Font Awesome 5 Free', 'Font Awesome 5 Free Solid', 'PowerlineSymbols'",
     "editor.formatOnSave": true,
     "files.trimTrailingWhitespace": true,
     "terminal.integrated.shell.linux": "/usr/bin/zsh"
