@@ -1,0 +1,9 @@
+---
+- name: Ensure packages are present
+  become: true
+  pacman:
+    name:
+      - vagrant
+      - virtualbox
+      - virtualbox-host-modules-arch
+    update_cache: true
