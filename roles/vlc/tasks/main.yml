@@ -1,0 +1,6 @@
+---
+- name: Ensure package is present
+  become: true
+  pacman:
+    name: vlc
+    update_cache: true
