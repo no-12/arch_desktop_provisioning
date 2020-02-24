@@ -3,6 +3,7 @@
   become: true
   pacman:
     name:
+      - ttf-jetbrains-mono
       - otf-font-awesome
       - ttf-font-awesome
       - powerline-fonts

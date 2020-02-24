@@ -1,7 +1,7 @@
-URxvt.font:                     xft:Roboto Mono for Powerline:size=12
-URxvt.boldFont:                 xft:Roboto Mono for Powerline:bold:size=12
-URxvt.italicFont:               xft:Roboto Mono for Powerline:italic:size=12
-URxvt.boldItalicFont:           xft:Roboto Mono for Powerline:bold:italic:size=12
+URxvt.font:                     xft:JetBrains Mono:size=12:antialias=true
+URxvt.boldFont:                 xft:JetBrains Mono:bold:size=12:antialias=true
+URxvt.italicFont:               xft:JetBrains Mono:italic:size=12:antialias=true
+URxvt.boldItalicFont:           xft:JetBrains Mono:bold:italic:size=12:antialias=true
 
 URxvt.scrollBar: true
 URxvt.scrollBar_right: true
