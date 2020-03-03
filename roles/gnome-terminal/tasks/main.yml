@@ -1,0 +1,26 @@
+---
+- name: Ensure packages are present
+  become: yes
+  pacman:
+    name:
+      - gnome-terminal
+      - dconf
+      - python-psutil
+    update_cache: yes
+
+- name: Ensure dconf keys are set
+  dconf:
+    key: "{{ item.key }}"
+    value: "{{ item.value }}"
+    state: present
+  with_items:
+    - { key: "{{ gnome_terminal_dconf_base_path }}/default-show-menubar", value: "false" }
+    - { key: "{{ gnome_terminal_dconf_profile }}/audible-bell", value: "false" }
+    - { key: "{{ gnome_terminal_dconf_profile }}/background-color", value: "'{{ colors.background }}'" }
+    - { key: "{{ gnome_terminal_dconf_profile }}/font", value: "'JetBrains Mono 12'" }
+    - { key: "{{ gnome_terminal_dconf_profile }}/foreground-color", value: "'{{ colors.foreground }}'" }
+    - { key: "{{ gnome_terminal_dconf_profile }}/palette", value: "['{{ colors.black }}', '{{ colors.red }}', '{{ colors.green }}', '{{ colors.yellow }}', '{{ colors.blue }}', '{{ colors.magenta }}', '{{ colors.cyan }}', '{{ colors.white }}', '{{ colors.bright_black }}', '{{ colors.bright_red }}', '{{ colors.bright_green }}', '{{ colors.bright_yellow }}', '{{ colors.bright_blue }}', '{{ colors.bright_magenta }}', '{{ colors.bright_cyan }}', '{{ colors.bright_white }}']" }
+    - { key: "{{ gnome_terminal_dconf_profile }}/scrollback-unlimited", value: "true" }
+    - { key: "{{ gnome_terminal_dconf_profile }}/scrollbar-policy", value: "'never'" }
+    - { key: "{{ gnome_terminal_dconf_profile }}/use-system-font", value: "false" }
+    - { key: "{{ gnome_terminal_dconf_profile }}/use-theme-colors", value: "false" }

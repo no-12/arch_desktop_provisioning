@@ -15,7 +15,7 @@
     recurse: yes
 
 - name: Ensure colors file is present
-  copy:
+  template:
     src: colors
     dest: "{{ ansible_env.HOME }}/.Xresources.d/colors"
     mode: 0644

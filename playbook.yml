@@ -33,7 +33,7 @@
     - zsh
     - xorg
     - lightdm
-    - urxvt
+    - gnome-terminal
     - i3
     - i3lock
     - i3blocks

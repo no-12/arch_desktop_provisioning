@@ -62,7 +62,7 @@ bar {
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal, workspace $ws_terminal
+bindsym $mod+Return workspace $ws_terminal, exec i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -228,12 +228,12 @@ mode "Resize" {
 bindsym $mod+r mode "Resize"
 
 mode "Applications" {
-    bindsym s exec pavucontrol, mode "default", workspace $ws_system
-    bindsym n exec nm-connection-editor, mode "default", workspace $ws_system
-    bindsym m exec arandr, mode "default", workspace $ws_system
+    bindsym s workspace $ws_system, exec pavucontrol, mode "default"
+    bindsym n workspace $ws_system, exec nm-connection-editor, mode "default"
+    bindsym m workspace $ws_system, exec arandr, mode "default"
     bindsym c exec galculator, mode "default"
-    bindsym b exec firefox -new-tab about:home, mode "default", workspace $ws_web_browser
-    bindsym e exec code, mode "default", workspace $ws_code
+    bindsym b workspace $ws_web_browser, exec firefox -new-tab about:home, mode "default"
+    bindsym e workspace $ws_code, exec code, mode "default"
     bindsym f exec thunar, mode "default"
 
     bindsym Return mode "default"
