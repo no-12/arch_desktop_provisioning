@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 case $BLOCK_BUTTON in
-1) i3-msg exec pavucontrol >/dev/null ;;
+1) i3-msg exec "pavucontrol --tab=3" >/dev/null ;;
 3) amixer -q -D pulse sset Master toggle ;;
 4) amixer -q -D pulse sset Master 5%+ unmute ;;
 5) amixer -q -D pulse sset Master 5%- unmute ;;
