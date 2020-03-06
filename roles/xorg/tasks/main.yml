@@ -8,6 +8,13 @@
       - xss-lock
     update_cache: yes
 
+- name: Ensure keyboard.conf is present
+  become: yes
+  copy:
+    src: 00-keyboard.conf
+    dest: /etc/X11/xorg.conf.d/00-keyboard.conf
+    mode: 0644
+
 - name: Ensures .Xresources.d dir exists
   file:
     path: "{{ ansible_env.HOME }}/.Xresources.d"
