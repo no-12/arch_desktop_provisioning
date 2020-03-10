@@ -19,7 +19,7 @@
   command: "code --install-extension {{ item }}"
   when: item not in code_installed_extensions.stdout_lines
   with_items:
-    - donjayamanne.githistory
+    - eamodio.gitlens
     - foxundermoon.shell-format
     - mads-hartmann.bash-ide-vscode
     - ms-azuretools.vscode-docker
