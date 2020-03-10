@@ -6,6 +6,7 @@
       - i3blocks
       - alsa-utils
       - pulseaudio-alsa
+      - acpi
     update_cache: yes
 
 - name: Ensures i3blocks config dir exists
@@ -15,7 +16,7 @@
     recurse: yes
 
 - name: Ensure i3blocks config file is present
-  copy:
+  template:
     src: i3blocks.conf
     dest: "{{ ansible_env.HOME }}/.config/i3blocks/i3blocks.conf"
     mode: 0644

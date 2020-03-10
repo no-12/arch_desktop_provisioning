@@ -1,5 +1,6 @@
 ---
 cpu_ucode_vendor: intel
+i3blocks_show_battery: false
+picom_vsync: false
 xorg_xf86_video: xf86-video-vmware
 xorg_laptop_screen_identifier:
-picom_vsync: false

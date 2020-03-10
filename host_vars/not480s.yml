@@ -1,5 +1,6 @@
 ---
 cpu_ucode_vendor: intel
+i3blocks_show_battery: true
+picom_vsync: true
 xorg_xf86_video: xf86-video-intel
 xorg_laptop_screen_identifier: "0x42"
-picom_vsync: true
