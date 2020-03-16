@@ -1,8 +1,10 @@
 ---
-- name: Ensure package is present
+- name: Ensure packages are present
   become: true
   pacman:
-    name: docker
+    name:
+      - docker
+      - docker-compose
     update_cache: true
 
 - name: Ensure users are in docker group
