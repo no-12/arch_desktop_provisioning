@@ -7,6 +7,8 @@
   register: aur_package_query
 
 - name: Ensure package is present
+  become: yes
+  become_user: aur_builder
   command:
     cmd: "yay -S --noconfirm --noprovides {{ aur_package_name }}"
   when: aur_package_query.rc == 1
