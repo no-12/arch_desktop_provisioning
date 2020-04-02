@@ -6,6 +6,7 @@
       - i3-wm
       - playerctl
       - libnotify
+      - scrot
     update_cache: yes
 
 - name: Ensures config dir exists
@@ -33,3 +34,9 @@
     mode: 0744
   with_fileglob:
     - "scripts/*"
+
+- name: Ensures screenshots dir exists
+  file:
+    path: "{{ ansible_env.HOME }}/screenshots"
+    state: directory
+    recurse: yes
