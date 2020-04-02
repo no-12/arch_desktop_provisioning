@@ -257,6 +257,6 @@ for_window [class="Galculator"] floating enable
 
 exec_always --no-startup-id systemctl --user restart picom
 
-exec --no-startup-id xss-lock blurlock
+exec --no-startup-id xss-lock -l blurlock
 exec --no-startup-id blueman-applet
 exec --no-startup-id nm-applet

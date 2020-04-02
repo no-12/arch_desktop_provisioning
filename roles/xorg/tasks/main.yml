@@ -5,7 +5,6 @@
     name:
       - xorg
       - "{{ xorg_xf86_video }}"
-      - xss-lock
     update_cache: yes
 
 - name: Ensure keyboard.conf is present

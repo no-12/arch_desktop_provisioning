@@ -6,6 +6,7 @@
       - i3lock
       - scrot
       - imagemagick
+      - xss-lock
     update_cache: yes
 
 - name: Ensure blurlock file is present
