@@ -11,7 +11,7 @@
     src: reflector.service
     dest: /etc/systemd/system/reflector.service
     mode: 0644
-  notify: reload reflector.service
+  notify: restart reflector.timer
 
 - name: Ensure timer file is present
   become: true
