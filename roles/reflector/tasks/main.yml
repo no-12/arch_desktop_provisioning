@@ -6,16 +6,24 @@
       - reflector
     update_cache: yes
 
-- name: Ensure hooks directory exists
-  become: true
-  file:
-    name: /etc/pacman.d/hooks
-    state: directory
-    recurse: yes
-
-- name: Ensure mirrorupgrade.hook file is present
+- name: Ensure service file is present
   become: true
   template:
-    src: mirrorupgrade.hook
-    dest: /etc/pacman.d/hooks/mirrorupgrade.hook
+    src: reflector.service
+    dest: /etc/systemd/system/reflector.service
     mode: 0644
+  notify: reload reflector.service
+
+- name: Ensure timer file is present
+  become: true
+  copy:
+    src: reflector.timer
+    dest: /etc/systemd/system/reflector.timer
+    mode: 0644
+  notify: restart reflector.timer
+
+- name: Ensure timer is enabled
+  become: true
+  systemd:
+    name: reflector.timer
+    enabled: yes

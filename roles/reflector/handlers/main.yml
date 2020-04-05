@@ -1,0 +1,14 @@
+---
+- name: reload reflector.service
+  become: true
+  systemd:
+    name: reflector.service
+    state: reloaded
+    daemon_reload: yes
+
+- name: restart reflector.timer
+  become: true
+  systemd:
+    name: reflector.timer
+    state: restarted
+    daemon_reload: yes
