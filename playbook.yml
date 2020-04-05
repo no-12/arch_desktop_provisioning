@@ -25,9 +25,7 @@
 
   roles:
     - cpu_ucode
-    - role: reflector
-      vars:
-        - reflector_country: Germany
+    - reflector
     - yay
     - fonts
     - zsh
