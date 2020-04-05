@@ -3,4 +3,3 @@
   become: true
   pacman:
     name: firefox
-    update_cache: true

@@ -7,4 +7,3 @@
       - pulseaudio-alsa
       - pulseaudio-bluetooth
       - pavucontrol
-    update_cache: yes

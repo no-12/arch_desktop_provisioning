@@ -11,7 +11,6 @@
           - vim
           - git
           - gvfs
-        update_cache: yes
 
     - name: Ensure common services are started and enabled
       become: yes

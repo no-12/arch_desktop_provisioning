@@ -3,7 +3,6 @@
   become: true
   pacman:
     name: blueman
-    update_cache: true
 
 - name: Ensure bluetooth service is started and enabled
   become: yes

@@ -5,7 +5,6 @@
     name:
       - networkmanager
       - network-manager-applet
-    update_cache: yes
 
 - name: Ensure config is present
   become: yes

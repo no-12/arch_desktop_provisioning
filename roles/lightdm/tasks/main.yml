@@ -6,7 +6,6 @@
       - lightdm
       - lightdm-gtk-greeter
       - numlockx
-    update_cache: yes
 
 - name: Ensure config files are present
   copy:

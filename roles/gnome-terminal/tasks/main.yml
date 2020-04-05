@@ -6,7 +6,6 @@
       - gnome-terminal
       - dconf
       - python-psutil
-    update_cache: yes
 
 - name: Ensure dconf keys are set
   dconf:

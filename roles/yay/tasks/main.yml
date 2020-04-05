@@ -5,7 +5,6 @@
     name:
       - base-devel
       - go
-    update_cache: yes
 
 - name: Check if yay is present
   command: which yay

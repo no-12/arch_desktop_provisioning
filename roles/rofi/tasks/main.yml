@@ -24,7 +24,6 @@
   become: yes
   pacman:
     name: rofi
-    update_cache: yes
 
 - name: Ensures rofi config dir exists
   file:

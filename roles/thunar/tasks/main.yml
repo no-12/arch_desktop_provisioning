@@ -3,4 +3,3 @@
   become: true
   pacman:
     name: thunar
-    update_cache: yes

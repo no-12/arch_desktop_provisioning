@@ -3,7 +3,6 @@
   become: true
   pacman:
     name: "{{ cpu_ucode_vendor }}-ucode"
-    update_cache: true
 
 - name: Find systemd-boot entry files
   find:

@@ -7,7 +7,6 @@
       - alsa-utils
       - pulseaudio-alsa
       - acpi
-    update_cache: yes
 
 - name: Ensures i3blocks config dir exists
   file:

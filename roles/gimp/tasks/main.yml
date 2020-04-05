@@ -3,4 +3,3 @@
   become: true
   pacman:
     name: gimp
-    update_cache: true

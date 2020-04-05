@@ -3,7 +3,6 @@
   become: true
   pacman:
     name: cups
-    update_cache: true
 
 - name: Ensure cupsd service is stopped and disabled
   become: yes

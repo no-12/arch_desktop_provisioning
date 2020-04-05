@@ -3,7 +3,6 @@
   become: yes
   pacman:
     name: zsh
-    update_cache: yes
 
 - name: Ensure oh my zsh is present
   shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended

@@ -3,7 +3,6 @@
   become: true
   pacman:
     name: galculator
-    update_cache: true
 
 - name: Ensures config dir exists
   file:

@@ -12,11 +12,11 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision "shell", inline: <<-SHELL
     if [[ ! -f /usr/bin/reflector ]]; then
-      pacman -Sy --noconfirm reflector
+      pacman -Syu --noconfirm reflector
       reflector --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
     fi
     if [[ ! -f /usr/bin/ansible ]]; then
-      pacman -S --noconfirm ansible
+      pacman -Syu --noconfirm ansible
     fi
     sudo -u vagrant ansible-playbook -i "$HOSTNAME", -e ansible_connection=local /vagrant/playbook.yml -v
   SHELL

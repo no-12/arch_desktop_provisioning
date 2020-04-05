@@ -3,7 +3,6 @@
   become: true
   pacman:
     name: picom
-    update_cache: yes
 
 - name: Ensures config dir exists
   file:

@@ -4,7 +4,6 @@
   pacman:
     name:
       - reflector
-    update_cache: yes
 
 - name: Ensure service file is present
   become: true

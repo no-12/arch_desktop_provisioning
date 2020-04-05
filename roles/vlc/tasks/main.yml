@@ -3,4 +3,3 @@
   become: true
   pacman:
     name: vlc
-    update_cache: true

@@ -6,4 +6,3 @@
       - vagrant
       - virtualbox
       - virtualbox-host-modules-arch
-    update_cache: true

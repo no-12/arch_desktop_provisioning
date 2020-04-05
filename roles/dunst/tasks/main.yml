@@ -3,7 +3,6 @@
   become: true
   pacman:
     name: dunst
-    update_cache: true
 
 - name: Ensures config dir exists
   file:

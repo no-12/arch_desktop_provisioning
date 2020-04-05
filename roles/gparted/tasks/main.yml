@@ -6,4 +6,3 @@
       - gparted
       - dosfstools
       - mtools
-    update_cache: true

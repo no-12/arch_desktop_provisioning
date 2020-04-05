@@ -7,7 +7,6 @@
       - playerctl
       - libnotify
       - scrot
-    update_cache: yes
 
 - name: Ensures config dir exists
   file:
