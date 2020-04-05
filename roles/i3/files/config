@@ -171,7 +171,8 @@ bindsym XF86AudioPrev exec playerctl previous
 
 # rofi
 bindsym $mod+d exec rofi -show drun
-bindsym $mod+z exec rofi -show clipboard -run-command '{cmd}'
+bindsym $mod+Shift+d exec rofi -show window
+bindsym $mod+c exec rofi -show clipboard -run-command '{cmd}'
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
