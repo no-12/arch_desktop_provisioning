@@ -21,8 +21,8 @@ set_from_resource $darkwhite   color7  #000000
 set_from_resource $white       color15 #000000
 
 # define workspaces
-set $ws_web_browser "1: 龜"
-set $ws_terminal "2: "
+set $ws_terminal "1: "
+set $ws_web_browser "2: 龜"
 set $ws_code "3: "
 set $ws4 "4"
 set $ws5 "5"
@@ -120,13 +120,14 @@ bindsym $mod+Shift+a focus child
 # focus latest urgent
 bindsym $mod+u [urgent=latest] focus
 
-# flip through workspaces
-bindsym $mod+Tab workspace next
-bindsym $mod+Shift+Tab workspace prev
+# cycle through workspaces
+bindsym $mod+` workspace back_and_forth
+bindsym $mod+Tab workspace next_on_output
+bindsym $mod+Shift+Tab workspace prev_on_output
 
 # switch to workspace
-bindsym $mod+1 workspace $ws_web_browser
-bindsym $mod+2 workspace $ws_terminal
+bindsym $mod+1 workspace $ws_terminal
+bindsym $mod+2 workspace $ws_web_browser
 bindsym $mod+3 workspace $ws_code
 bindsym $mod+4 workspace $ws4
 bindsym $mod+5 workspace $ws5
@@ -137,8 +138,8 @@ bindsym $mod+9 workspace $ws_chat
 bindsym $mod+0 workspace $ws_system
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $ws_web_browser
-bindsym $mod+Shift+2 move container to workspace $ws_terminal
+bindsym $mod+Shift+1 move container to workspace $ws_terminal
+bindsym $mod+Shift+2 move container to workspace $ws_web_browser
 bindsym $mod+Shift+3 move container to workspace $ws_code
 bindsym $mod+Shift+4 move container to workspace $ws4
 bindsym $mod+Shift+5 move container to workspace $ws5
@@ -247,8 +248,8 @@ mode "Applications" {
 bindsym $mod+x mode "Applications"
 
 
-assign [class="firefox"] $ws_web_browser
 assign [class="URxvt"] $ws_terminal
+assign [class="firefox"] $ws_web_browser
 assign [class="Code"] $ws_code
 assign [class="Pavucontrol"] $ws_system
 assign [class="Nm-connection-editor"] $ws_system
