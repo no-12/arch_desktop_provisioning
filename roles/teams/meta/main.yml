@@ -1,5 +1,0 @@
----
-dependencies:
-  - role: _aur_package
-    vars:
-      aur_package_name: teams
