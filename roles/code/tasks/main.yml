@@ -35,7 +35,7 @@
     recurse: yes
 
 - name: Ensure config is present
-  copy:
+  template:
     src: settings.json
     dest: "{{ ansible_env.HOME }}/.config/Code - OSS/User/settings.json"
     mode: 0644

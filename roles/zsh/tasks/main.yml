@@ -9,10 +9,21 @@
   args:
     creates: "{{ ansible_env.HOME }}/.oh-my-zsh"
 
+- name: Ensure powerlevel10k theme is present
+  git:
+    repo: https://github.com/romkatv/powerlevel10k.git
+    dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/themes/powerlevel10k"
+
 - name: Ensure .zshrc file exists
   template:
     src: .zshrc
     dest: "{{ ansible_env.HOME }}/.zshrc"
+    mode: 0644
+
+- name: Ensure .p10k.zsh file exists
+  copy:
+    src: .p10k.zsh
+    dest: "{{ ansible_env.HOME }}/.p10k.zsh"
     mode: 0644
 
 - name: Ensure zsh is the default shell

@@ -15,7 +15,7 @@
     recurse: yes
 
 - name: Ensure config file is present
-  copy:
+  template:
     src: config
     dest: "{{ ansible_env.HOME }}/.config/i3/config"
     mode: 0644

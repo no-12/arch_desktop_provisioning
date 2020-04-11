@@ -32,7 +32,7 @@ set $ws8 "8"
 set $ws_chat "9: "
 set $ws_system "10: "
 
-font pango: Roboto Mono 10
+font pango: {{ fonts.i3 }} {{ font_sizes.i3 }}
 
 hide_edge_borders both
 
@@ -56,6 +56,7 @@ bar {
         inactive_workspace  $darkblack  $darkblack  $darkwhite
         urgent_workspace    $red        $red        $white
     }
+    font pango: {{ fonts.i3 }}, Font Awesome 5 Free Solid {{ font_sizes.i3 }}
 }
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -255,7 +256,6 @@ assign [class="Code"] $ws_code
 assign [class="Pavucontrol"] $ws_system
 assign [class="Nm-connection-editor"] $ws_system
 assign [class="Arandr"] $ws_system
-assign [class="Microsoft Teams - Preview"] $ws_chat
 
 for_window [class="Galculator"] floating enable
 

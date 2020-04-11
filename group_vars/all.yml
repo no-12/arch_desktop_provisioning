@@ -1,22 +1,33 @@
 ---
 ansible_python_interpreter: /usr/bin/python
 colors:
-    foreground: "#f8f8f2"
-    background: "#272822"
-    black: "#000000"
-    red: "#f92672"
-    green: "#a6e22e"
-    yellow: "#f4bf75"
-    blue: "#66d9ef"
-    magenta: "#ae81ff"
-    cyan: "#a1efe4"
-    white: "#666666"
-    bright_black: "#272822"
-    bright_red: "#f92672"
-    bright_green: "#a6e22e"
-    bright_yellow: "#f4bf75"
-    bright_blue: "#66d9ef"
-    bright_magenta: "#ae81ff"
-    bright_cyan: "#a1efe4"
-    bright_white: "#ffffff"
+  foreground: "#f8f8f2"
+  background: "#272822"
+  black: "#000000"
+  red: "#f92672"
+  green: "#a6e22e"
+  yellow: "#f4bf75"
+  blue: "#66d9ef"
+  magenta: "#ae81ff"
+  cyan: "#a1efe4"
+  white: "#666666"
+  bright_black: "#272822"
+  bright_red: "#f92672"
+  bright_green: "#a6e22e"
+  bright_yellow: "#f4bf75"
+  bright_blue: "#66d9ef"
+  bright_magenta: "#ae81ff"
+  bright_cyan: "#a1efe4"
+  bright_white: "#ffffff"
+fonts:
+  i3: Roboto
+  editor: JetBrains Mono
+  terminal: JetBrains Mono
+  glyphs:
+    - PowerlineSymbols
+    - Font Awesome 5 Brands
+    - Font Awesome 5 Free
+    - devicons
+    - Material Design Icons Desktop
+    - MesloLGS Nerd Font Mono
 reflector_country: Germany

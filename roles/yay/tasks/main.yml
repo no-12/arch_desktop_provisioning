@@ -33,7 +33,8 @@
 
 - name: Ensure aur_builder user is present
   become: yes
-  user: name=aur_builder
+  user:
+    name: aur_builder
 
 - name: Ensure aur_builder can run pacman with sudo
   become: yes
@@ -41,5 +42,6 @@
      path: /etc/sudoers.d/aur_builder-allow-to-sudo-pacman
      state: present
      line: "aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman"
+     regexp: '^aur_builder'
      validate: /usr/sbin/visudo -cf %s
      create: yes

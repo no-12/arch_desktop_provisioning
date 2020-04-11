@@ -1,0 +1,3 @@
+---
+- name: reload fc-cache
+  command: fc-cache -r
