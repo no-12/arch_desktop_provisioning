@@ -1,2 +1,3 @@
 *.retry
 .vagrant/
+.py_venv/
