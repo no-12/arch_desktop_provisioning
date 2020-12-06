@@ -1,0 +1,10 @@
+---
+cpu_ucode_vendor: intel
+font_sizes:
+  i3: 11
+  editor: 14
+  terminal: 12
+i3blocks_show_battery: false
+picom_vsync: true
+xorg_xf86_video: nvidia
+xorg_laptop_screen_identifier:
