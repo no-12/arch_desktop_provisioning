@@ -1,0 +1,20 @@
+---
+- name: Ensure packages are present
+  become: true
+  community.general.pacman:
+    name:
+      - libsecret
+      - seahorse
+      - gnome-keyring
+
+- name: Ensure keyring password is updated when user account password changes
+  become: true
+  community.general.pamd:
+    name: passwd
+    type: password
+    control: required
+    module_path: pam_unix.so
+    new_type: password
+    new_control: optional
+    new_module_path: pam_gnome_keyring.so
+    state: after

@@ -7,10 +7,10 @@
       pacman:
         name:
           - base-devel
-          - htop
-          - vim
           - git
           - gvfs
+          - htop
+          - vim
 
     - name: Ensure common services are started and enabled
       become: yes
@@ -30,6 +30,7 @@
     - zsh
     - xorg
     - lightdm
+    - keyring
     - termite
     - ranger
     - i3

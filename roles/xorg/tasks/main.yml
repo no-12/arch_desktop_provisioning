@@ -32,11 +32,14 @@
     create: yes
     mode: 0644
 
-- name: Ensure .xinitrc is present
+- name: Ensure dotfiles are present
   copy:
-    src: .xinitrc
-    dest: "{{ ansible_env.HOME }}/.xinitrc"
+    src: "{{ item }}"
+    dest: "{{ ansible_env.HOME }}/{{ item }}"
     mode: 0644
+  with_items:
+    - .xinitrc
+    - .profile
 
 - name: Ensure xorg.conf file exists
   become: yes
