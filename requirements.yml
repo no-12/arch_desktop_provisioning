@@ -1,0 +1,3 @@
+---
+- src: https://github.com/no-12/ansible-role-dotfiles.git
+  version: main
