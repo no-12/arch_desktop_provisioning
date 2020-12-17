@@ -2,18 +2,20 @@
 - name: Ensure package is present
   become: true
   pacman:
-    name: cups
+    name:
+      - cups
+      - cups-pdf
 
-- name: Ensure cupsd service is stopped and disabled
+- name: Ensure cups service is stopped and disabled
   become: yes
   systemd:
-    name: org.cups.cupsd.service
+    name: cups.service
     state: stopped
     enabled: no
 
-- name: Ensure cupsd socket is started and enabled
+- name: Ensure cups socket is started and enabled to only start CUPS when a program wants to use the service
   become: yes
   systemd:
-    name: org.cups.cupsd.socket
+    name: cups.socket
     state: started
     enabled: yes
