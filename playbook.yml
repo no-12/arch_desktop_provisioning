@@ -8,8 +8,6 @@
         name:
           - base-devel
           - gvfs
-          - htop
-          - vim
 
     - name: Ensure common services are started and enabled
       become: yes
