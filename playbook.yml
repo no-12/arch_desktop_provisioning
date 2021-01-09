@@ -1,16 +1,14 @@
 ---
 - hosts: all
-
+  become: true
   pre_tasks:
-    - name: Ensure common packages are present
-      become: yes
+    - name: Ensure common base packages are present
       pacman:
         name:
           - base-devel
           - gvfs
 
     - name: Ensure common services are started and enabled
-      become: yes
       systemd:
         name: "{{ item }}"
         state: started
@@ -19,6 +17,13 @@
         - fstrim.timer
         - systemd-timesyncd.service
 
+  roles:
+    - role: ansible-role-dotfiles
+      vars:
+        dotfiles_install_packages: true
+        dotfiles_zsh_install_external_extensions: false
+
+- hosts: all
   roles:
     - cpu_ucode
     - reflector
