@@ -9,9 +9,10 @@
 - name: Ensure users are in docker group
   become: true
   user:
-    name: "{{ ansible_user }}"
+    name: "{{ item }}"
     groups: docker
     append: yes
+  with_items: "{{ docker_users }}"
 
 - name: Ensure service is enabled
   become: true
