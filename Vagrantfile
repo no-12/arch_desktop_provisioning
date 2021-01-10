@@ -15,10 +15,13 @@ Vagrant.configure("2") do |config|
       pacman -Syu --noconfirm reflector
       reflector --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
     fi
-    if [[ ! -f /usr/bin/ansible ]]; then
-      pacman -Syu --noconfirm ansible
+    if [[ ! -f /usr/bin/git ]]; then
+      pacman -S --noconfirm git
     fi
-    sudo -u vagrant ansible-playbook -i "$HOSTNAME", -e ansible_connection=local /vagrant/playbook.yml -v
+    if [[ ! -f /usr/bin/python3 ]]; then
+      pacman -S --noconfirm python3
+    fi
+    sudo -u vagrant bash /vagrant/run_local.sh
   SHELL
 
 end
