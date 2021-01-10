@@ -2,20 +2,50 @@
 - hosts: all
   become: true
   pre_tasks:
-    - name: Ensure common base packages are present
+    - name: Ensure packages are present
       pacman:
         name:
+          - arandr
           - base-devel
+          - blueman
+          - chromium
+          - cups
+          - cups-pdf
+          - dosfstools
+          - firefox
+          - gimp
+          - gparted
+          - gpicview-gtk3
           - gvfs
+          - mtools
+          - pavucontrol
+          - pulseaudio
+          - pulseaudio-alsa
+          - pulseaudio-bluetooth
+          - thunar
+          - vagrant
+          - virtualbox
+          - virtualbox-host-modules-arch
+          - vlc
 
-    - name: Ensure common services are started and enabled
+    - name: Ensure services are started and enabled
       systemd:
         name: "{{ item }}"
         state: started
-        enabled: yes
+        enabled: true
       with_items:
+        - bluetooth.service
+        - cups.socket
         - fstrim.timer
         - systemd-timesyncd.service
+
+    - name: Ensure services are stopped and disabled
+      systemd:
+        name: "{{ item }}"
+        state: stopped
+        enabled: false
+      with_items:
+        - cups.service
 
   roles:
     - role: ansible-role-dotfiles
@@ -40,19 +70,7 @@
     - rofi
     - picom
     - dunst
-    - arandr
     - networkmanager
-    - pulseaudio
-    - blueman
-    - gparted
     - galculator
-    - gpicview
-    - gimp
-    - thunar
-    - firefox
-    - chromium
     - code
     - docker
-    - vagrant
-    - vlc
-    - cups

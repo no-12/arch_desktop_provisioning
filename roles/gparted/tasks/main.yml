@@ -1,8 +1,0 @@
----
-- name: Ensure packages are present
-  become: true
-  pacman:
-    name:
-      - gparted
-      - dosfstools
-      - mtools

@@ -1,3 +1,0 @@
----
-gnome_terminal_dconf_base_path: /org/gnome/terminal/legacy
-gnome_terminal_dconf_profile: "{{ gnome_terminal_dconf_base_path }}/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9"
