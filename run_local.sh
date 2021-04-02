@@ -3,12 +3,13 @@ set -eu -o pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 
-if [[ -d .py_venv ]]; then
-    source ".py_venv/bin/activate"
+if [[ -d .python_venv ]]; then
+    source ".python_venv/bin/activate"
 else
-    python3 -m venv .py_venv
-    source ".py_venv/bin/activate"
-    pip install --upgrade pip setuptools ansible
+    python3 -m venv .python_venv
+    source ".python_venv/bin/activate"
+    pip install --upgrade pip
+    pip install --upgrade ansible
 fi
 
 (
