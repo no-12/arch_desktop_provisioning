@@ -14,7 +14,11 @@ fi
 (
     cd $SCRIPT_DIR
     ansible-galaxy role install --role-file requirements.yml --roles-path roles_external --force-with-deps
-    ansible-playbook -v --inventory "$HOSTNAME", --extra-vars ansible_connection=local --ask-become-pass playbook.yml
+    ansible-playbook \
+        --inventory "$HOSTNAME", \
+        --extra-vars "ansible_connection=local arch_user=$(whoami)" \
+        --ask-become-pass \
+        playbook.yml -v
 )
 
 deactivate

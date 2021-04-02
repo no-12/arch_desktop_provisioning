@@ -52,3 +52,12 @@
       vars:
         dotfiles_install_packages: true
         dotfiles_zsh_install_external_extensions: false
+
+  tasks:
+    - name: Ensure zsh is the default shell
+      user:
+        name: "{{ item }}"
+        shell: /usr/bin/zsh
+      with_items:
+        - root
+        - "{{ arch_user }}"
