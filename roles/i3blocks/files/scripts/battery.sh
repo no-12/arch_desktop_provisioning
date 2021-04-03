@@ -7,14 +7,14 @@ case $BLOCK_BUTTON in
 esac
 
 declare -a battery
-mapfile -t battery < <(awk -F'[, %]' '/Battery 0/ { print $3; print $5; }' <<<"$acpi_output")
+mapfile -t battery < <(awk -F'[,%]' '/Battery 0/ { print $1; print $2; }' <<<"$acpi_output")
 
 if [ ${#battery[@]} -eq 0 ]; then
   exit
 fi
 
 plugged_in=""
-if [ "${battery[0]}" = Charging ] || grep -q 'on-line' <<<"$acpi_output"; then
+if [ "${battery[0]}" = *"Charging"* ] || grep -q 'on-line' <<<"$acpi_output"; then
   plugged_in=
 fi
 
