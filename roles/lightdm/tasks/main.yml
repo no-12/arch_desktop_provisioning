@@ -8,7 +8,7 @@
       - numlockx
 
 - name: Ensure config files are present
-  copy:
+  template:
     src: "{{ item }}"
     dest: "/etc/lightdm/{{ item }}"
     mode: 0644

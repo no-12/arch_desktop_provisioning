@@ -7,4 +7,3 @@ font_sizes:
 i3blocks_show_battery: false
 picom_vsync: true
 xorg_xf86_video: nvidia
-xorg_laptop_screen_identifier:

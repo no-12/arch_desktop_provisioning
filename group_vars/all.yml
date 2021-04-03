@@ -32,4 +32,5 @@ fonts:
     - devicons
     - Material Design Icons Desktop
     - MesloLGS Nerd Font Mono
+lightdm_display_setup_script:
 reflector_country: Germany
