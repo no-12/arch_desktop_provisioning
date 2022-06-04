@@ -8,15 +8,15 @@
       - ttf-font-awesome
       - powerline-fonts
 
-- name: Ensure user's fonts dir exists
-  file:
-    path: "{{ ansible_env.HOME }}/.local/share/fonts"
-    state: directory
-    recurse: yes
+# - name: Ensure user's fonts dir exists
+#   file:
+#     path: "{{ ansible_env.HOME }}/.local/share/fonts"
+#     state: directory
+#     recurse: yes
 
-- name: Ensure MaterialDesign-Font is present
-  git:
-    repo: 'https://github.com/Templarian/MaterialDesign-Font.git'
-    dest: "{{ ansible_env.HOME }}/.local/share/fonts/MaterialDesign-Font"
-    update: yes
-  notify: reload fc-cache
+# - name: Ensure MaterialDesign-Font is present
+#   git:
+#     repo: 'https://github.com/Templarian/MaterialDesign-Font.git'
+#     dest: "{{ ansible_env.HOME }}/.local/share/fonts/MaterialDesign-Font"
+#     update: yes
+#   notify: reload fc-cache

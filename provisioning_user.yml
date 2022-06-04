@@ -1,15 +1,15 @@
 ---
 - hosts: all
   roles:
-    - cpu_ucode
-    - reflector
-    - yay
+    # - cpu_ucode
+    # - reflector
+    # - yay
     - fonts
-    - ansible-role-dotfiles
+    # - ansible-role-dotfiles
     - xorg
     - lightdm
     - keyring
-    - termite
+    # - termite
     - i3
     - i3lock
     - i3blocks
@@ -18,5 +18,5 @@
     - dunst
     - networkmanager
     - galculator
-    - code
+    # - code
     - docker

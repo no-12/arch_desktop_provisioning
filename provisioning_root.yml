@@ -15,13 +15,13 @@
           - firefox
           - gimp
           - gparted
-          - gpicview-gtk3
+          #- gpicview-gtk3
           - gvfs
           - mtools
-          - pavucontrol
-          - pulseaudio
-          - pulseaudio-alsa
-          - pulseaudio-bluetooth
+          # - pavucontrol
+          # - pulseaudio
+          # - pulseaudio-alsa
+          # - pulseaudio-bluetooth
           - thunar
           - vagrant
           - virtualbox
@@ -47,17 +47,17 @@
       with_items:
         - cups.service
 
-  roles:
-    - role: ansible-role-dotfiles
-      vars:
-        dotfiles_install_packages: true
-        dotfiles_zsh_install_external_extensions: false
+  # roles:
+  #   - role: ansible-role-dotfiles
+  #     vars:
+  #       dotfiles_install_packages: true
+  #       dotfiles_zsh_install_external_extensions: false
 
-  tasks:
-    - name: Ensure zsh is the default shell
-      user:
-        name: "{{ item }}"
-        shell: /usr/bin/zsh
-      with_items:
-        - root
-        - "{{ arch_user }}"
+  # tasks:
+  #   - name: Ensure zsh is the default shell
+  #     user:
+  #       name: "{{ item }}"
+  #       shell: /usr/bin/zsh
+  #     with_items:
+  #       - root
+  #       - "{{ arch_user }}"

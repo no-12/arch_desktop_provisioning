@@ -1,5 +1,5 @@
 configuration {
-    modi: "window,drun,ssh,clipboard:greenclip print";
+    modi: "window,drun,ssh";
     width: 50;
     lines: 15;
         font: "Roboto Mono 16";

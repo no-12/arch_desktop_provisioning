@@ -1,7 +1,7 @@
 ---
-dependencies:
-  - role: _aur_package
-    vars:
-      aur_packages:
-        - ttf-devicons
-        - nerd-fonts-meslo
+# dependencies:
+#   - role: _aur_package
+#     vars:
+#       aur_packages:
+#         - ttf-devicons
+#         - nerd-fonts-meslo
