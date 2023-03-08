@@ -7,3 +7,5 @@ font_sizes:
 i3blocks_show_battery: false
 picom_vsync: false
 xorg_xf86_video: xf86-video-vmware
+users:
+  - name: vagrant

@@ -4,10 +4,7 @@
   pacman:
     name:
       - i3blocks
-      - alsa-utils
-      - pulseaudio-alsa
       - acpi
-      - pacman-contrib
 
 - name: Ensures i3blocks config dir exists
   file:

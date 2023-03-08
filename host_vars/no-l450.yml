@@ -8,3 +8,6 @@ i3blocks_show_battery: true
 lightdm_display_setup_script: "xrandr --output eDP1 --mode 1920x1080 --rate 60"
 picom_vsync: true
 xorg_xf86_video: xf86-video-intel
+users:
+  - name: nico
+  - name: nicole

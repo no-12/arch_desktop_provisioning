@@ -1,8 +1,0 @@
-{
-    "editor.fontFamily": "'{{ fonts.editor }}', {% for font in fonts.glyphs %}'{{ font }}', {% endfor %}monospace",
-    "editor.fontSize": "{{ font_sizes.editor }}",
-    "editor.formatOnSave": true,
-    "files.trimTrailingWhitespace": true,
-    "terminal.integrated.fontFamily": "'{{ fonts.terminal }}', {% for font in fonts.glyphs %}'{{ font }}', {% endfor %}monospace",
-    "terminal.integrated.shell.linux": "/usr/bin/zsh"
-}

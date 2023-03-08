@@ -6,26 +6,27 @@
       pacman:
         name:
           - arandr
-          - base-devel
+          #- base-devel
           - blueman
-          - chromium
+          # - chromium
           - cups
           - cups-pdf
           - dosfstools
           - firefox
-          - gimp
+          #- gimp
           - gparted
           #- gpicview-gtk3
           - gvfs
           - mtools
-          # - pavucontrol
+          - pavucontrol
           # - pulseaudio
           # - pulseaudio-alsa
           # - pulseaudio-bluetooth
           - thunar
-          - vagrant
-          - virtualbox
-          - virtualbox-host-modules-arch
+          # - vagrant
+          # - virtualbox
+          # - virtualbox-host-modules-arch
+          - vim
           - vlc
 
     - name: Ensure services are started and enabled
@@ -47,7 +48,14 @@
       with_items:
         - cups.service
 
-  # roles:
+  roles:
+    - role: reflector
+    - role: fonts
+    - role: lightdm
+    - role: keyring
+    - role: networkmanager
+    - role: i3lock
+    - role: docker
   #   - role: ansible-role-dotfiles
   #     vars:
   #       dotfiles_install_packages: true

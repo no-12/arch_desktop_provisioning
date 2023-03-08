@@ -1,3 +1,0 @@
----
-- include: yay.yml aur_package_name={{item}}
-  loop: "{{ aur_packages }}"
