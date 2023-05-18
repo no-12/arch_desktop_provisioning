@@ -63,7 +63,7 @@ bar {
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return workspace $ws_terminal, exec i3-sensible-terminal
+bindsym $mod+Return workspace $ws_terminal, exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
