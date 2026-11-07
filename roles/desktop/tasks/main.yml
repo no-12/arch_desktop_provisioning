@@ -20,7 +20,7 @@
 
 - name: Ensure config dirs exist
   ansible.builtin.file:
-    path: "{{ ansible_env.HOME }}/.config/{{ item }}"
+    path: "{{ ansible_facts['env']['HOME'] }}/.config/{{ item }}"
     state: directory
     mode: "0755"
   loop:
@@ -33,7 +33,7 @@
 - name: Ensure niri config is present
   ansible.builtin.copy:
     src: niri/config.kdl
-    dest: "{{ ansible_env.HOME }}/.config/niri/config.kdl"
+    dest: "{{ ansible_facts['env']['HOME'] }}/.config/niri/config.kdl"
     mode: "0644"
     validate: niri validate -c %s
   # niri reloads its config automatically when the file changes
@@ -41,7 +41,7 @@
 - name: Ensure waybar config files are present
   ansible.builtin.copy:
     src: "waybar/{{ item }}"
-    dest: "{{ ansible_env.HOME }}/.config/waybar/{{ item }}"
+    dest: "{{ ansible_facts['env']['HOME'] }}/.config/waybar/{{ item }}"
     mode: "0644"
   loop:
     - config.jsonc
@@ -52,20 +52,20 @@
 - name: Ensure swaylock config is present
   ansible.builtin.template:
     src: swaylock.conf.j2
-    dest: "{{ ansible_env.HOME }}/.config/swaylock/config"
+    dest: "{{ ansible_facts['env']['HOME'] }}/.config/swaylock/config"
     mode: "0644"
 
 - name: Ensure swayidle config is present
   ansible.builtin.copy:
     src: swayidle/config
-    dest: "{{ ansible_env.HOME }}/.config/swayidle/config"
+    dest: "{{ ansible_facts['env']['HOME'] }}/.config/swayidle/config"
     mode: "0644"
   notify: Restart swayidle
 
 - name: Ensure swayidle user service is present
   ansible.builtin.copy:
     src: swayidle.service
-    dest: "{{ ansible_env.HOME }}/.config/systemd/user/swayidle.service"
+    dest: "{{ ansible_facts['env']['HOME'] }}/.config/systemd/user/swayidle.service"
     mode: "0644"
   notify: Restart swayidle
 
