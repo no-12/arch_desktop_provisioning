@@ -1,0 +1,8 @@
+# reflector options, read by the packaged reflector.service (managed by Ansible)
+# The 20 fastest of the 30 most recently synced HTTPS mirrors in {{ reflector_country }}.
+--save /etc/pacman.d/mirrorlist
+--protocol https
+--country {{ reflector_country }}
+--latest 30
+--number 20
+--sort rate

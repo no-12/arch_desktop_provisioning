@@ -1,0 +1,12 @@
+# swayidle config, read by swayidle.service (managed by Ansible)
+# Waybar's idle inhibitor (coffee cup) pauses these timeouts.
+
+# Lock the screen after 5 minutes without input
+timeout 300 'swaylock -f'
+
+# Turn monitors off after 10 minutes; niri turns them back on at the next input
+timeout 600 'niri msg action power-off-monitors'
+
+# Always lock before suspend, and on `loginctl lock-session`
+before-sleep 'swaylock -f'
+lock 'swaylock -f'

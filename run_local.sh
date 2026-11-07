@@ -6,4 +6,4 @@ ansible-playbook \
     --inventory "$HOSTNAME", \
     --extra-vars "ansible_connection=local arch_user=$(whoami)" \
     --ask-become-pass \
-    provisioning_user.yml -v
+    provision.yml -v

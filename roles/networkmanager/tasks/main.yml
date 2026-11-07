@@ -1,21 +1,12 @@
 ---
-- name: Ensure package is present
-  become: yes
-  pacman:
-    name:
-      - networkmanager
-      - network-manager-applet
+# NetworkManager with Arch's default config (keyfile connection profiles)
+- name: Ensure NetworkManager is present
+  become: true
+  community.general.pacman:
+    name: networkmanager
 
-- name: Ensure config is present
-  become: yes
-  copy:
-    src: NetworkManager.conf
-    dest: /etc/NetworkManager/NetworkManager.conf
-    mode: 0644
-  notify: restart NetworkManager.service
-
-- name: Ensure service is enabled
-  become: yes
-  systemd:
-    name: NetworkManager
-    enabled: yes
+- name: Ensure NetworkManager is enabled
+  become: true
+  ansible.builtin.systemd_service:
+    name: NetworkManager.service
+    enabled: true

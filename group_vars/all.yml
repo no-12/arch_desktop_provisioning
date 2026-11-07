@@ -19,18 +19,4 @@ colors:
   bright_magenta: "#f996e2"
   bright_cyan: "#23edda"
   bright_white: "#f9f9f9"
-docker_users:
-  - "{{ lookup('env', 'USER') }}"
-fonts:
-  i3: Roboto
-  editor: JetBrains Mono
-  terminal: JetBrains Mono
-  glyphs:
-    - PowerlineSymbols
-    - Font Awesome 5 Brands
-    - Font Awesome 5 Free
-    - devicons
-    - Material Design Icons Desktop
-    - MesloLGS Nerd Font Mono
-lightdm_display_setup_script:
 reflector_country: Germany

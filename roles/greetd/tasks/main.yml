@@ -1,0 +1,57 @@
+---
+# greetd + tuigreet: minimal, Wayland-native login
+
+- name: Ensure greetd and tuigreet are present
+  become: true
+  community.general.pacman:
+    name:
+      - greetd
+      - greetd-tuigreet
+
+- name: Ensure greetd config is present
+  become: true
+  ansible.builtin.copy:
+    src: config.toml
+    dest: /etc/greetd/config.toml
+    mode: "0644"
+
+- name: Ensure tuigreet can remember the last user and session
+  become: true
+  ansible.builtin.file:
+    path: /var/cache/tuigreet
+    state: directory
+    owner: greeter
+    group: greeter
+    mode: "0755"
+
+# Unlock GNOME Keyring with the login password
+- name: Ensure greetd login unlocks the keyring
+  become: true
+  community.general.pamd:
+    name: greetd
+    type: auth
+    control: include
+    module_path: system-local-login
+    new_type: auth
+    new_control: optional
+    new_module_path: pam_gnome_keyring.so
+    state: after
+
+- name: Ensure greetd session starts the keyring
+  become: true
+  community.general.pamd:
+    name: greetd
+    type: session
+    control: include
+    module_path: system-local-login
+    new_type: session
+    new_control: optional
+    new_module_path: pam_gnome_keyring.so
+    module_arguments: auto_start
+    state: after
+
+- name: Ensure greetd is enabled
+  become: true
+  ansible.builtin.systemd_service:
+    name: greetd.service
+    enabled: true

@@ -1,0 +1,78 @@
+---
+- name: Ensure desktop packages are present
+  become: true
+  community.general.pacman:
+    name:
+      - fuzzel
+      - mako
+      - niri
+      - noto-fonts
+      - pavucontrol
+      - swaybg
+      - swayidle
+      - swaylock
+      - ttf-nerd-fonts-symbols-mono
+      - waybar
+      - xdg-desktop-portal-gnome
+      - xdg-utils
+      - xorg-xwayland
+  tags: packages
+
+- name: Ensure config dirs exist
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.config/{{ item }}"
+    state: directory
+    mode: "0755"
+  loop:
+    - niri
+    - waybar
+    - swayidle
+    - swaylock
+    - systemd/user
+
+- name: Ensure niri config is present
+  ansible.builtin.copy:
+    src: niri/config.kdl
+    dest: "{{ ansible_env.HOME }}/.config/niri/config.kdl"
+    mode: "0644"
+    validate: niri validate -c %s
+  # niri reloads its config automatically when the file changes
+
+- name: Ensure waybar config files are present
+  ansible.builtin.copy:
+    src: "waybar/{{ item }}"
+    dest: "{{ ansible_env.HOME }}/.config/waybar/{{ item }}"
+    mode: "0644"
+  loop:
+    - config.jsonc
+    - style.css
+    - power_menu.xml
+  notify: Reload waybar
+
+- name: Ensure swaylock config is present
+  ansible.builtin.template:
+    src: swaylock.conf.j2
+    dest: "{{ ansible_env.HOME }}/.config/swaylock/config"
+    mode: "0644"
+
+- name: Ensure swayidle config is present
+  ansible.builtin.copy:
+    src: swayidle/config
+    dest: "{{ ansible_env.HOME }}/.config/swayidle/config"
+    mode: "0644"
+  notify: Restart swayidle
+
+- name: Ensure swayidle user service is present
+  ansible.builtin.copy:
+    src: swayidle.service
+    dest: "{{ ansible_env.HOME }}/.config/systemd/user/swayidle.service"
+    mode: "0644"
+  notify: Restart swayidle
+
+- name: Ensure swayidle user service is enabled and running
+  ansible.builtin.systemd_service:
+    name: swayidle.service
+    scope: user
+    enabled: true
+    state: started
+    daemon_reload: true

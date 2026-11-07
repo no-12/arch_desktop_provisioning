@@ -1,4 +1,6 @@
 ---
+# GNOME Keyring: encrypted password store for apps (Secret Service API via libsecret).
+# The greetd role unlocks it with the login password (PAM).
 - name: Ensure packages are present
   become: true
   community.general.pacman:
@@ -6,6 +8,7 @@
       - libsecret
       - seahorse
       - gnome-keyring
+      - gcr-4
 
 - name: Ensure keyring password is updated when user account password changes
   become: true
@@ -18,3 +21,24 @@
     new_control: optional
     new_module_path: pam_gnome_keyring.so
     state: after
+
+- name: Ensure environment.d dir exists
+  become: true
+  ansible.builtin.file:
+    path: /etc/environment.d
+    state: directory
+    mode: "0755"
+
+- name: Ensure SSH_AUTH_SOCK points to the gcr ssh agent
+  become: true
+  ansible.builtin.copy:
+    src: 50-gcr-ssh-agent.conf
+    dest: /etc/environment.d/50-gcr-ssh-agent.conf
+    mode: "0644"
+
+- name: Ensure gcr ssh agent socket is enabled for all users
+  become: true
+  ansible.builtin.systemd_service:
+    name: gcr-ssh-agent.socket
+    scope: global
+    enabled: true

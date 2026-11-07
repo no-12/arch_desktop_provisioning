@@ -1,7 +1,0 @@
----
-- name: restart dunst.service
-  systemd:
-    name: dunst
-    scope: user
-    state: restarted
-    daemon_reload: yes

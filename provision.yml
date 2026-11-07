@@ -1,0 +1,66 @@
+---
+- hosts: all
+  pre_tasks:
+    - name: Ensure packages are present
+      become: true
+      community.general.pacman:
+        name:
+          - ansible
+          - ansible-lint
+          - base
+          - base-devel
+          - gparted
+          - intel-media-driver
+          - intel-ucode
+          - less
+          - linux
+          - linux-firmware
+          - nano
+          - nextcloud-client
+          - pipewire
+          - pipewire-alsa
+          - pipewire-pulse
+          - prusa-slicer
+          - rsync
+          - smartmontools
+          - sof-firmware
+          - sudo
+          - sweethome3d
+          - ufw
+          - vlc
+          - vulkan-intel
+          - wget
+          - wireplumber
+          - zram-generator
+          - zsh
+
+    - name: Ensure SSD trim and time sync are enabled
+      become: true
+      ansible.builtin.systemd_service:
+        name: "{{ item }}"
+        enabled: true
+        state: started
+      loop:
+        - fstrim.timer
+        - systemd-timesyncd.service
+
+    - name: Ensure zsh is the default shell
+      become: true
+      user:
+        name: "{{ item }}"
+        shell: /usr/bin/zsh
+      with_items:
+        - root
+        - "{{ arch_user }}"
+
+  roles:
+    - role: reflector
+    - role: keyring
+    - role: greetd
+    - role: networkmanager
+    - role: desktop
+    - role: qalculate
+  #   - role: ansible-role-dotfiles
+  #     vars:
+  #       dotfiles_install_packages: true
+  #       dotfiles_zsh_install_external_extensions: false

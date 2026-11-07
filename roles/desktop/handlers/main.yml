@@ -1,0 +1,15 @@
+---
+# SIGUSR2 makes a running waybar reload config.jsonc and style.css.
+# Newly installed fonts are only picked up after a full restart (re-login).
+- name: Reload waybar
+  ansible.builtin.command: pkill -SIGUSR2 -x waybar
+  register: desktop_waybar_reload
+  changed_when: desktop_waybar_reload.rc == 0
+  failed_when: desktop_waybar_reload.rc not in [0, 1]
+
+- name: Restart swayidle
+  ansible.builtin.systemd_service:
+    name: swayidle.service
+    scope: user
+    state: restarted
+    daemon_reload: true

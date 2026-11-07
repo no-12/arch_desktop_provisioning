@@ -1,7 +1,0 @@
----
-- name: restart NetworkManager.service
-  become: yes
-  systemd:
-    name: NetworkManager
-    state: restarted
-    daemon_reload: yes

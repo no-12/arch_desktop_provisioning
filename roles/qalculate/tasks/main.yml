@@ -1,0 +1,6 @@
+---
+- name: Ensure Qalculate! is present
+  become: true
+  community.general.pacman:
+    name: qalculate-gtk
+  tags: packages

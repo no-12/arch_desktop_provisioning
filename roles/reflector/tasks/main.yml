@@ -1,28 +1,20 @@
 ---
-- name: Ensure package is present
+# Keep pacman's mirror list fresh with the reflector package's own weekly timer
+- name: Ensure reflector is present
   become: true
-  pacman:
-    name:
-      - reflector
+  community.general.pacman:
+    name: reflector
 
-- name: Ensure service file is present
+- name: Ensure reflector options are present
   become: true
-  template:
-    src: reflector.service
-    dest: /etc/systemd/system/reflector.service
-    mode: 0644
-  notify: restart reflector.timer
+  ansible.builtin.template:
+    src: reflector.conf.j2
+    dest: /etc/xdg/reflector/reflector.conf
+    mode: "0644"
 
-- name: Ensure timer file is present
+- name: Ensure weekly mirror list update is enabled
   become: true
-  copy:
-    src: reflector.timer
-    dest: /etc/systemd/system/reflector.timer
-    mode: 0644
-  notify: restart reflector.timer
-
-- name: Ensure timer is enabled
-  become: true
-  systemd:
+  ansible.builtin.systemd_service:
     name: reflector.timer
-    enabled: yes
+    enabled: true
+    state: started
