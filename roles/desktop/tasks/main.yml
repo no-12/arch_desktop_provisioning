@@ -76,3 +76,18 @@
     enabled: true
     state: started
     daemon_reload: true
+
+- name: Read desktop appearance settings
+  ansible.builtin.command: gsettings get org.gnome.desktop.interface {{ item.key }}
+  loop: "{{ desktop_gsettings_interface | dict2items }}"
+  register: desktop_gsettings_current
+  changed_when: false
+  check_mode: false
+
+- name: Ensure dark mode is preferred
+  ansible.builtin.command: gsettings set org.gnome.desktop.interface {{ item.item.key }} {{ item.item.value }}
+  loop: "{{ desktop_gsettings_current.results }}"
+  loop_control:
+    label: "{{ item.item.key }}={{ item.item.value }}"
+  when: item.stdout != "'" ~ item.item.value ~ "'"
+  changed_when: true

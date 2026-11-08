@@ -1,0 +1,7 @@
+---
+# GNOME interface settings, read by xdg-desktop-portal-gnome and GTK.
+# color-scheme: what the portal tells apps (Firefox, GTK4, Electron) to use
+# gtk-theme: GTK3 apps ignore color-scheme and only follow the theme name
+desktop_gsettings_interface:
+  color-scheme: prefer-dark
+  gtk-theme: Adwaita-dark
